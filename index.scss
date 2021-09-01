@@ -1,7 +1,7 @@
 *, ::before, ::after {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-inline: hidden;
 }
 
 html {
@@ -87,18 +87,19 @@ section#search {
 
 
 section#recent-posts {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     width: 100vw;
     box-sizing: border-box;
-    align-items: center;
+    align-items: start;
+    justify-items: center;
     margin: auto;
     padding: 2rem;
     min-height: 80vh;
     animation: .8s slideIn;
 
-    .row {
-        margin-top: 1rem;
+    .main-title {
+        grid-column: 1 / -1;
     }
 
     .post {
@@ -127,9 +128,16 @@ section#recent-posts {
     }
 }
 
+@media screen and (min-width: 600px) {
+    section#recent-posts {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 @media screen and (min-width: 1000px) {
-    .row {
-        flex-direction: row;
+    section#recent-posts {
+        width: 75%;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
